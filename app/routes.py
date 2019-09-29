@@ -5,6 +5,7 @@ from app import socketio
 import json
 from app import classifier
 from flask_socketio import send, emit
+from app import loaded_model
 
 stat_data = {
   "probabilities": [],
@@ -31,7 +32,7 @@ def model_data():
 
   print(result)
   stat_data['lastTen'] = result
-  classifierRes = classifier.classify_device(result[:-4])
+  classifierRes = classifier.classify_device(loaded_model, result[:-4])
   consumptionIndex = classifierRes.index(max(classifierRes))
 
   if consumptionIndex > 2:
