@@ -4,7 +4,6 @@ import json
 import time
 import numpy as np
 import pandas as pd
-from collections import deque
 
 
 def get_meter_json(url, username, password):
@@ -71,7 +70,7 @@ if __name__ == '__main__':
 
   device_name = input('Geraetename:')
 
-  values = deque(maxlen=10)
+  values = []
 
   while True:
       try:
@@ -94,6 +93,7 @@ if __name__ == '__main__':
               values.append((timestamp, result['power_phase3']))
               if len(values) > 9:
                   # send to server
+                  values.pop(0)
               print(timestamp, result['power_phase3'])
       except KeyboardInterrupt:
           df = pd.DataFrame.from_dict(dict, orient = "index").reset_index()
