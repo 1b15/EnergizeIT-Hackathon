@@ -12,7 +12,7 @@ function initializePieChart(){
             'Android Smartphone',
             'Ventilator (1)',
             'Ventilator (2)',
-            'Ventilator (3)',
+            'Ventilator (3) defect',
         ]
     };
     var alternating_data = [
