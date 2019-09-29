@@ -90,11 +90,12 @@ if __name__ == '__main__':
                   dict[timestamp] = result['power_phase3']
               old_timestamp = data[key]['received']
 
-              values.append((timestamp, result['power_phase3']))
+              values.append((timestamp, result['power_phase3'], result['consumption_total']))
+
               if len(values) > 9:
                   # send to server
                   values.pop(0)
-              print(timestamp, result['power_phase3'])
+              print(timestamp, values[-1])
       except KeyboardInterrupt:
           df = pd.DataFrame.from_dict(dict, orient = "index").reset_index()
           df.to_csv('./' + device_name + '.csv', index=False)
