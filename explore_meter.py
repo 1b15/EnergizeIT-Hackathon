@@ -71,6 +71,7 @@ if __name__ == '__main__':
   device_name = input('Geraetename:')
 
   values = []
+  last_energy = -1.0
 
   while True:
       try:
@@ -90,12 +91,16 @@ if __name__ == '__main__':
                   dict[timestamp] = result['power_phase3']
               old_timestamp = data[key]['received']
 
-              values.append((timestamp, result['power_phase3'], result['consumption_total']))
+              if last_energy == -1.0:
+                  last_energy = result['consumption_total']['value']
+
+              values.append((timestamp, result['power_phase3']['value'], result['consumption_total']['value'] - last_energy))
+              last_energy = result['consumption_total']['value']
 
               if len(values) > 9:
-                  # send to server
+                  # send values to server
                   values.pop(0)
-              print(timestamp, values[-1])
+              print(values[-1])
       except KeyboardInterrupt:
           df = pd.DataFrame.from_dict(dict, orient = "index").reset_index()
           df.to_csv('./' + device_name + '.csv', index=False)
