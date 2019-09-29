@@ -1,4 +1,3 @@
-
 import urllib.request
 import json
 import time
@@ -98,7 +97,15 @@ if __name__ == '__main__':
               last_energy = result['consumption_total']['value']
 
               if len(values) > 9:
-                  # send values to server
+                  # send values to serve
+
+                  myurl = "http://127.0.0.1:5000/Test"
+                  req = urllib.request.Request(myurl)
+                  req.add_header('Content-Type', 'application/json; charset=utf-8')
+                  jsondata = json.dumps(values)
+                  jsondataasbytes = jsondata.encode('utf-8')  # needs to be bytes
+                  req.add_header('Content-Length', len(jsondataasbytes))
+                  response = urllib.request.urlopen(req, jsondataasbytes)
                   values.pop(0)
               print(values[-1])
       except KeyboardInterrupt:

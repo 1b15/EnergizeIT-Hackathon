@@ -3,20 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style src="static/css/lib/bootstrap.css"> </style>
-    <style src="static/css/lib/bootstrap-grid.css"> </style>
-    <style src="static/css/lib/bootstrap-reboot.css"> </style>
-    <style src="static/css/custom.css"> </style>
-    <script src="static/js/lib/bootstrap.js"></script>
+    <link rel="stylesheet" href="static/css/lib/bootstrap.css"> </link>
+    <link rel="stylesheet" href="static/css/lib/bootstrap-grid.css"> </link>
+    <link rel="stylesheet" href="static/css/lib/bootstrap-reboot.css"> </link>
+    <link rel="stylesheet" href="static/css/custom.css"> </link>
     <script src="static/js/lib/jquery-3.4.1.min.js"></script>
+    <script src="static/js/lib/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="static/js/charts.js"> </script>#
+    <script src="static/js/socketio.js"> </script>
+    <script src="static/js/main.js"> </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="static/js/sockets.js"> </script>
 </head>
 <body>
-    <header>
-        Test
-    </header>
-    <content class="container">
-        Test
-    </content>
+    <div class="d-flex flex-column flex-wrap">
+        <div class="container-fluid d-flex flex-row flex-wrap justify-content-between">
+            <div class="container">
+                <canvas id="pieChart"> </canvas>
+            </div>
+            <div class="container">
+                <canvas id="plotChart"></canvas>
+            </div>
+        </div>
+        <div class="container-fluid d-flex flex-row justify-content-start">
+            <div class="container">
+                <canvas id="barChart"> </canvas>
+            </div>
+        </div>
+    </div>
     <footer>
 
     </footer>
