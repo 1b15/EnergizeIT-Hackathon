@@ -32,7 +32,7 @@ def model_data():
 
   print(result)
   stat_data['lastTen'] = result
-  classifierRes = classifier.classify_device(loaded_model, result[:-4])
+  classifierRes = classifier.classify_device(loaded_model, result[-4:])
   consumptionIndex = classifierRes.index(max(classifierRes))
 
   if consumptionIndex > 2:

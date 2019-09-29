@@ -2,17 +2,17 @@ function initializePieChart(){
     data = {
         datasets: [{
             data: [0, 0, 0, 0, 0, 0, 0],
-            backgroundColor: ["#a6a6a6", "#b3c6ff", "#1a1aff", "#99ff99","#00ff00","#00b300"]
+            backgroundColor: ["#b3c6ff", "#1a1aff", "#99ff99","#00ff00","#00b300","#a6a6a6"]
         }],
 
         // These labels appear in the legend and in the tooltips when hovering different arcs
         labels: [
-            'Nothing',
             'iPhone',
             'Android Smartphone',
             'Ventilator (1)',
             'Ventilator (2)',
             'Ventilator (3) defect',
+            'Nothing',
         ]
     };
     var alternating_data = [
@@ -39,7 +39,7 @@ function initializePlotChart(){
                 pointColor : "#00ff00",
                 pointStrokeColor : "#fff",
                 data : [0,0,0,0,0,0,0,0,0,0],
-                label: "Power Consumption in Watt Hours",
+                label: "Power Consumption in Watt",
                 borderColor: "#4dff4d",
                 backgroundColor: "rgba(128, 255, 128, 0.4)",
                 pointBackgroundColor: "#00ff00"
@@ -81,7 +81,7 @@ function initializeBarChart() {
       datasets: [
         {
           backgroundColor: ["#b3c6ff", "#1a1aff","#00b300"],
-          data: [250,300,400]
+          data: [0,0,0]
         }
       ]
     } ;
