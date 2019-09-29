@@ -8,7 +8,8 @@ from flask_socketio import send, emit
 
 stat_data = {
   "probabilities": [],
-  "lastTen": []
+  "lastTen": [],
+  "totalConsumption": [0,0,0]
 }
 @app.route('/',methods=['GET'])
 def hello_world():
@@ -24,11 +25,20 @@ def model_data():
   data = request.get_json()
   print(data)
   result = []
+
   for arr in data:
     result.append(arr[1])
+
   print(result)
-  stat_data['lastTen'] = result;
+  stat_data['lastTen'] = result
   classifierRes = classifier.classify_device(result[:-4])
+  consumptionIndex = classifierRes.index(max(classifierRes))
+
+  if consumptionIndex > 2:
+    consumptionIndex = 2
+  print(consumptionIndex)
+  print(data[9])
+  stat_data['totalConsumption'][consumptionIndex] += data[9][2]
   stat_data['probabilities'] = classifierRes
   return json.dumps({'success': True}), 200, {'ContentType': 'application/json'}
 
